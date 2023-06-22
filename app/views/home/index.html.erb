@@ -1,0 +1,14 @@
+<div>
+    <h1>Articles</h1>
+    <% @articles.each do |article| %>
+        <div>
+            <div>
+                <%= article.title %>
+            </div>
+            <p>
+                <%= article.description %>
+            </p>
+            <div><%= article.created_at %></div>
+        </div>
+    <% end %>
+</div>
