@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root "home#index"
   get "about", to: "about#index"
-  resources :articles
+  get "login", to: "login#new"
+  post "login", to: "login#create"
+  delete "logout", to: "login#destroy"
+  resources :students
 end

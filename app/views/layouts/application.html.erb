@@ -6,15 +6,84 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+
     <nav>
-      <%= link_to 'home', root_path %>
-      <%= link_to 'about', about_path %>
+      <div class="nav-wrapper">
+        <div class="container">
+              <%= link_to 'Home', root_path %>
+
+          <%# <a href="#!" class="brand-logo">Logo</a> %>
+          <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+           
+            <% if logged_in? %>
+            <li>
+              <%= link_to 'Students', students_path %>
+            </li>
+            <% end %>
+            <li>
+              <%= link_to 'About', about_path %>
+            </li>
+            <li>
+              <%= session_link %>
+            </li>
+            <% if !logged_in? %>
+              <li>
+                <%= link_to 'Signup', new_student_url %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </nav>
-    <%= yield %>
+
+    <ul class="sidenav" id="slide-out">
+      <li>
+        <%= link_to 'Home', root_path %>
+      </li>
+      <% if logged_in? %>
+        <li>
+          <%= link_to 'Students', students_path %>
+        </li>
+      <% end %>
+      <li>
+        <%= link_to 'About', about_path %>
+      </li>
+      <li>
+        <%= session_link %>
+      </li>
+       <% if logged_in? %>
+      <li>
+        <%= link_to 'Signup', new_student_url %>
+      </li>
+      <% end %>
+
+    </ul>
+    <div class="container">
+      <div class="alert">
+        <% flash.each do |key, message| %>
+          <% if key == "notice" %>
+            <div class="card-panel blue white-text">
+              <%= message %>
+            </div>
+          <% elsif key == "error" %>
+            <div class="card-panel red white-text">
+              <%= message %>
+            </div>
+          <% elsif key == "success" %>
+            <div class="card-panel green white-text">
+              <%= message %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>

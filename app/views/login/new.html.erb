@@ -1,0 +1,15 @@
+
+<h3 class="center-align">Login</h3>
+<div style="margin: 50px auto; max-width: 700px">
+    <%= form_for :login do |f| %>
+       
+        <%= f.label :email%>
+        <%= f.email_field :email%>
+
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+
+        <%= f.submit "submit", class: "btn orange" %>
+    <% end %>
+    
+</div>

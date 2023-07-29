@@ -1,0 +1,20 @@
+<div>
+    <h3>Students</h3>
+    <div class="row">
+        <% @students.each do |student| %>
+            <div class="col s4">
+                <div class="card-panel ">
+                    <div class="card-title" style="font-size: 24px">
+                        <%= student.name %>
+                    </div>
+                    <span>
+                        <%= student.email %>
+                    </span>
+                    <div style="margin: 10px 0">
+                        <%= link_to "View", student_path(student.id)  %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

@@ -1,14 +1,20 @@
 <div>
-    <h1>Articles</h1>
-    <% @articles.each do |article| %>
-        <div>
-            <div>
-                <%= article.title %>
+    <h3>Articles</h3>
+    <div class="row">
+        <% @articles.each do |article| %>
+            <div class="col s4">
+                <div class="card">
+                    <div class="card-content">
+                    <span><%= article.created_at %></span>
+                    <span class="card-title activator grey-text text-darken-4">
+                     <%= article.title %><i class="material-icons right">more_vert</i></span>
+                    </div>
+                    <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4"> <%= article.title %><i class="material-icons right">close</i></span>
+                     <%= article.description %>
+                    </div>
+                </div>
             </div>
-            <p>
-                <%= article.description %>
-            </p>
-            <div><%= article.created_at %></div>
-        </div>
-    <% end %>
+        <% end %>
+    </div>
 </div>

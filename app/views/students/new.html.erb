@@ -1,0 +1,28 @@
+
+<h3 class="center-align">Sign up</h3>
+<div style="margin: 50px auto; max-width: 700px">
+    <%= form_for @student do |f| %>
+        <%= f.label :name%>
+        <%= f.text_field :name%>
+
+        <%= f.label :email%>
+        <%= f.email_field :email%>
+
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+
+        <%= f.label :password_confirmation%>
+        <%= f.password_field :password_confirmation%>
+
+        <%= f.submit "submit", class: "btn orange" %>
+    <% end %>
+    <% if @student.errors.any? %>
+        <div class="card-panel red lighten-2 white-text">
+            <ul>
+                <% @student.errors.full_messages.each do |message| %>
+                    <li><%= message%></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+</div>
